@@ -1,0 +1,33 @@
+name: ezxml
+description: 轻量级的C语言xml解析库
+keywords:                                      # 多标签
+  - base
+  - xml
+author:
+license: MIT                    # GPLv2，LGPLv2.1，MIT，Apache license v2.0，BSD
+
+homepage: http://ezxml.sourceforge.net/
+
+depends:                                       # 该组件依赖其他的组件
+  - libc
+  - minic
+
+build_config:
+  include:
+  cflag: ''                             # C 编译器所需要要的编译参数
+  cxxflag: ''                         # CXX 编译器所需要要的编译参数
+  asmflag: ''                            # 汇编器所需要要参数
+  # define:                                      # 宏定义
+    # - CONFIG_XXX
+    # - CONFIG_AAA
+    # - CONFIG_BBB
+    # - XXX=1024
+
+source_file:
+  - "*.c"                                      # 支持通配符与正则表达示
+
+install:
+  - dest: "include/"
+    source:
+      - ezxml.h
+      - '*.c'
