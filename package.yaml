@@ -17,11 +17,10 @@ build_config:
   cflag: ''                             # C 编译器所需要要的编译参数
   cxxflag: ''                         # CXX 编译器所需要要的编译参数
   asmflag: ''                            # 汇编器所需要要参数
-  # define:                                      # 宏定义
-    # - CONFIG_XXX
-    # - CONFIG_AAA
-    # - CONFIG_BBB
-    # - XXX=1024
+
+  define:                                      # 宏定义
+    - EZXML_NOMMAP
+    - EZXML_NOFILE_SYS
 
 source_file:
   - "*.c"                                      # 支持通配符与正则表达示

@@ -32,7 +32,11 @@
 #ifndef EZXML_NOMMAP
 #include <sys/mman.h>
 #endif // EZXML_NOMMAP
+
+#ifndef EZXML_NOFILE_SYS
 #include <sys/stat.h>
+#endif //EZXML_NOFILE_SYS
+
 #include "ezxml.h"
 
 #define EZXML_WS   "\t\r\n "  // whitespace
@@ -620,6 +624,7 @@ ezxml_t ezxml_parse_fp(FILE *fp)
     return &root->xml;
 }
 
+#ifndef EZXML_NOFILE_SYS
 // A wrapper for ezxml_parse_str() that accepts a file descriptor. First
 // attempts to mem map the file. Failing that, reads the file into memory.
 // Returns NULL on failure.
@@ -661,6 +666,7 @@ ezxml_t ezxml_parse_file(const char *file)
     if (fd >= 0) close(fd);
     return xml;
 }
+#endif //EZXML_NOFILE_SYS
 
 // Encodes ampersand sequences appending the results to *dst, reallocating *dst
 // if length excedes max. a is non-zero for attribute encoding. Returns *dst
